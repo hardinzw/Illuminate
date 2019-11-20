@@ -1,12 +1,19 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import './App.css';
+import Dashboard from './ui/screens/Dashboard'
 
-function App() {
-  return (
-    <div className="App">
+class App extends Component {
 
-    </div>
-  );
-}
+  render() {
+    return (
+      <Router>
+          <Switch>
+            <Route exact path="/" component={Dashboard} />
+          </Switch>
+      </Router>
+      )
+    }
+};
 
 export default App;
