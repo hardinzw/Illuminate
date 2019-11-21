@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import NavBar from '../../components/navigation/NavBar';
+import Navigation from '../../components/navigation/AppBar';
 
 class Dashboard extends Component {
     render() {
         return (
-            <NavBar />
+          <div className="container">
+            <Navigation />
+          </div>
         )
     }
 }
