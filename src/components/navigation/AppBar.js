@@ -4,23 +4,17 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import Switch from '@material-ui/core/Switch';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormGroup from '@material-ui/core/FormGroup';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import Drawer from '@material-ui/core/Drawer';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import List from '@material-ui/core/List';
-import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
-import Table from '../issues'
+import DashboardTwoToneIcon from '@material-ui/icons/DashboardTwoTone';
+import BugReportTwoToneIcon from '@material-ui/icons/BugReportTwoTone';
 
 const drawerWidth = 240
 
@@ -46,10 +40,14 @@ const useStyles = makeStyles(theme => ({
   },
   content: {
     flexGrow: 1,
-    padding: theme.spacing(50),
+    padding: theme.spacing(100),
   },
   toolbar: theme.mixins.toolbar,
 }));
+
+function ListItemLink(props) {
+    return <ListItem button component="a" {...props} />;
+  }
 
 export default function Navigation() {
   const classes = useStyles();
@@ -117,29 +115,20 @@ export default function Navigation() {
           paper: classes.drawerPaper,
         }}
       >
-        <div className={classes.toolbar} />
-        <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
-        <Divider />
-        <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
+      <div className={classes.toolbar} />
+        <ListItemLink href="/">
+          <ListItemIcon>
+            <DashboardTwoToneIcon />
+          </ListItemIcon>
+          <ListItemText primary="Dashboard" />
+        </ListItemLink>
+        <ListItemLink href="/issues">
+          <ListItemIcon>
+            <BugReportTwoToneIcon />
+          </ListItemIcon>
+          <ListItemText primary="Issues" />
+        </ListItemLink>
       </Drawer>
-      <main className={classes.content}>
-        <div className={classes.toolbar} />
-            <Table />
-      </main>
     </div>
   );
 }

@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
-import Navigation from '../../components/navigation/AppBar';
+import Table from '../../components/table/index';
 
-class Dashboard extends Component {
+class Issues extends Component {
     render() {
         return (
           <div className="container">
+            <Table/>
           </div>
         )
     }
 }
 
-export default Dashboard;
+export default Issues;
