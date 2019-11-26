@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import Table from '../../components/table/index';
+import IssuesTable from '../../components/table/index';
 
-class Issues extends Component {
+class Issues extends React.Component {
     render() {
         return (
           <div className="container">
-            <Table/>
+            <IssuesTable />
           </div>
         )
     }

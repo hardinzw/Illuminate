@@ -16,7 +16,7 @@ import InboxIcon from '@material-ui/icons/MoveToInbox';
 import DashboardTwoToneIcon from '@material-ui/icons/DashboardTwoTone';
 import BugReportTwoToneIcon from '@material-ui/icons/BugReportTwoTone';
 
-const drawerWidth = 240
+const drawerWidth = 200
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -117,12 +117,6 @@ export default function Navigation() {
       >
       <div className={classes.toolbar} />
         <ListItemLink href="/">
-          <ListItemIcon>
-            <DashboardTwoToneIcon />
-          </ListItemIcon>
-          <ListItemText primary="Dashboard" />
-        </ListItemLink>
-        <ListItemLink href="/issues">
           <ListItemIcon>
             <BugReportTwoToneIcon />
           </ListItemIcon>
