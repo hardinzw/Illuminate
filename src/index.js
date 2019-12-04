@@ -1,10 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import App from './components/App';
 import * as serviceWorker from './serviceWorker';
+import configureStore from './store';
+import { Provider } from 'react-redux';
+import GlobalStyle from './styles/globals';
+require('dotenv').config();
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const renderApp = () => { 
+  const store = configureStore;
+  ReactDOM.render(
+    <Provider store={store}>
+        <GlobalStyle />
+        <App />
+    </Provider>,
+    document.getElementById('root'),
+  );
+};
+
+renderApp();
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
