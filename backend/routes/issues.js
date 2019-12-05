@@ -1,60 +1,69 @@
-const router = require('express').Router();
-let Issue = require('../models/Issue');
+var express = require('express');
+var router = express.Router();
+let Issue = require('../controllers/IssueController');
 
-router.route('/').get((req, res) => {
-    Issue.find()
-      .then(issues => res.json(issues))
-      .catch(err => res.status(400).json('Error: ' + err));
-});
+/*  "/api/issues"
+ *    GET: finds all issues
+ *    POST: creates a new user
+ */
+router.route('/issues')
 
-router.route('/add').post((req, res) => {
-  const username = req.body.username;
-  const project = req.body.project;
-  const subject = req.body.subject;
-  const severity = req.body.severity;
-  const status = req.body.status;
-  const date = Date.parse(req.body.date);
-
-  const newIssue = new Issue({
-    username,
-    project,
-    subject,
-    severity,
-    status,
-    date,
-  });
-  newIssue.save()
-    .then(() => res.json('Issue added!'))
-    .catch(err => res.status(400).json('Error: ' + err));
-});
-
-router.route('/:id').get((req, res) => {
-  Issue.findById(req.params.id)
-    .then(issue => res.json(issue))
-    .catch(err => res.status(400).json('Error: ' + err));
-});
-
-router.route('/:id').delete((req, res) => {
-  Issue.findByIdAndDelete(req.params.id)
-    .then(() => res.json('Issue deleted.'))
-    .catch(err => res.status(400).json('Error: ' + err));
-});
-
-router.route('/update/:id').post((req, res) => {
-  Issue.findById(req.params.id)
-    .then(issue => {
-      issue.username = req.body.username;
-      issue.project = req.body.project;
-      issue.subject = req.body.subject;
-      issue.severity = req.body.severity;
-      issue.status = req.body.status;
-      issue.date = Date.parse(req.body.date);
-
-      issue.save()
-        .then(() => res.json('Issue updated'))
-        .catch(err => res.status(400).json('Error: ' + err));
+    /**
+     * Creates a new issue
+     *
+     * HTTP POST http://localhost:3000/api/issues
+     * @return list of users in JSON format
+     */
+    .post(function (req, res) {
+        Issue.store(req, res);
     })
-    .catch(err => res.status(400).json('Error: ' + err));
-});
+
+    /**
+     * find all the issues
+     *
+     * HTTP GET http://localhost:3000/api/issues
+     * @return list of users in JSON format
+     */
+    .get(function (req, res) {
+       Issue.findAll(req, res);
+    });
+
+
+/*  "/api/issues/:id"
+ *    GET: find issue by id
+ *    PUT: update issue by id
+ *    DELETE: deletes issue by id
+ */
+router.route('/issues/:id')
+
+    /**
+     * Find the issue with that id
+     *
+     * HTTP GET http://localhost:3000/api/issues/:id
+     * @return list of users in JSON format
+     */
+    .get(function (req, res) {
+        Issue.findById(req, res);
+    })
+
+    /**
+     * Update the issue with that id
+     *
+     * HTTP PUT http://localhost:3000/api/issues/:id
+     * @return list of users in JSON format
+     */
+    .put(function (req, res) {
+       Issue.update(req, res);
+    })
+
+    /**
+     * Delete the issue with that id
+     *
+     * HTTP DELETE http://localhost:3000/api/issues/:id
+     * @return list of users in JSON format
+     */
+    .delete(function (req, res) {
+       Issue.delete(req, res);
+    });
 
 module.exports = router;

@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { colorsDark, colorsLight } from '../../styles/palette';
-import Nav from '../Common/Header/Nav';
-import Dashboard from '../Dashboard';
+import { Wrapper, Title } from './styles';
+import Form from '../Common/Form';
+
+import DataTable from '../Common/Table';
 
 class App extends Component {
-
-  componentDidMount() {
-  };
-
   render() {
     return (
       <ThemeProvider theme={colorsDark}>
-        <Nav />
-        <Dashboard />
+          <Wrapper>
+            <DataTable />
+            <Form />
+          </Wrapper>
       </ThemeProvider>
     );
   };

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ListItem from '../ListItem/index';
+import ListItem from '../../ListItem/index';
 import { ListWrapper } from './styles';
 
 class List extends Component {

@@ -30,5 +30,5 @@ const Button = ({
 export default Button;
 
 export {
-  ButtonInline
+  ButtonInline,
 };
