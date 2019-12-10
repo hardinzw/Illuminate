@@ -13,19 +13,3 @@ export const colorsLight = {
   textSecondary: '#aaaaaa',
   border: '#EAEAEA',
 };
-
-export const navColorsLight = {
-  background: '#EAEAEA',
-  backgroundSecondary: '#F8F8F8',
-  text: '#84886',
-  textSecondary: '#aaaaaa',
-  border: '#EAEAEA',
-};
-
-export const tableColorsLight = {
-  background: '#EAEAEA',
-  backgroundSecondary: '#F8F8F8',
-  text: '#84886',
-  textSecondary: '#aaaaaa',
-  border: '#EAEAEA',
-};

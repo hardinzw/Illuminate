@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { tablet, monitor, mobile } from '../../styles/mediaQueries';
+import { tablet, monitor, mobile } from '../../../styles/mediaQueries';
 
 export const Wrapper = styled.div`
   background-color: ${({ theme }) => theme.background};
